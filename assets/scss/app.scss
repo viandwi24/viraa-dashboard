@@ -1,0 +1,156 @@
+@charset 'UTF-8';
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+// variable
+$dashboard-content-sidebar-color: theme('colors.gray.50');
+$dashboard-content-background-color: #F5F5FB;
+$dashboard-sidebar-stroke-color: #E9E9EF;
+$dashboard-primary-color: theme('colors.blue.500');
+
+// dashboard
+.dashboard {
+    @apply flex;
+    @apply flex-row;
+    @apply flex-grow;
+    @apply min-h-screen;
+    background: $dashboard-content-background-color;
+
+    * {
+        font-family: 'Raleway', sans-serif;
+    }
+
+    // sidebar
+    .sidebar {
+        background: $dashboard-content-sidebar-color;
+
+        // left
+        &.left {
+            @apply flex;
+            @apply flex-col;
+            width: 240px;
+            border-right: 2px solid $dashboard-sidebar-stroke-color;
+
+            .brand {
+                @apply pt-4;
+                @apply text-center;
+                @apply inline-block;
+                @apply text-2xl;
+                width: 100%;
+
+                a {
+                    @apply font-bold;
+                    color: theme('colors.gray.800');
+                }
+            }
+
+            .scrollable {
+                @apply flex;
+                @apply flex-col;
+                @apply h-full;
+                @apply justify-between;
+                @apply mt-4;
+
+                .menu {
+                    @apply mt-4;
+                    @apply flex;
+                    @apply flex-col;
+
+                    .item {
+                        @apply my-3;
+                        padding-left: 28px;
+
+                        &.active {
+                            box-shadow: 3px 0 0px 0 $dashboard-primary-color;
+                            border-right: 1px solid $dashboard-primary-color;
+
+                            .icon {
+                                color: $dashboard-primary-color;
+                            }
+
+                            .text {
+                                @apply font-semibold;
+                                color: theme('colors.gray.800');
+                            }
+                        }
+
+                        .icon {
+                            @apply inline-block;
+                            margin-right: 20px;
+                            color: theme('colors.gray.400');
+                        }
+
+                        .text {
+                            @apply text-base;
+                            @apply align-middle;
+                            color: theme('colors.gray.400');
+                        }
+                    }
+                }
+            }
+        }
+
+        // right
+        &.right {
+            width: 300px;
+            border-left: 2px solid $dashboard-sidebar-stroke-color;
+
+            .profile {
+                @apply text-center;
+
+                .avatar {
+                    @apply border-gray-500;
+                    @apply border-2;
+                    @apply rounded-full;
+                    @apply inline-block;
+                }
+            }
+
+            .list {
+                @apply flex;
+                @apply flex-col;
+
+                .item {
+                    @apply flex;
+                    @apply flex-row;
+                    @apply text-sm;
+
+                    .icon {
+                        @apply p-3;
+                    }
+                }
+            }
+        }
+    }
+
+    // content
+    .content {
+        @apply flex-1;
+        background: $dashboard-content-background-color;
+
+        .header {
+            @apply pt-4;
+            @apply flex;
+            @apply justify-between;
+            
+            h1 {
+                @apply text-lg;
+                @apply font-bold;
+                color: theme('colors.gray.800');
+            }
+
+            .right {
+                @apply flex;
+
+                * {
+                    @apply self-center;
+                }
+            }
+        }
+
+        .list {
+            @apply flex;
+            @apply flex-row;
+        }
+    }
+}

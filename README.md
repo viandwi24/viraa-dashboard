@@ -1,7 +1,13 @@
 # viraa-dashboard
-A Open Source Flat Design Dashboard Built for Nuxtjs.
+A Open Source Flat Design Dashboard Template Built with Tailwindcss and Nuxtjs.
 
 ![screenshot preview](https://raw.githubusercontent.com/viandwi24/viraa-dashboard/dev/assets/images/ss/1.png)
+
+## Features
+- Tailwindcss
+- Build from Nuxtjs with Typescript
+- Splitted Components
+- Scss with Tailwind Style
 
 ## Progress
 - [x] Nuxt init

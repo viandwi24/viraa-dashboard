@@ -1,9 +1,14 @@
 /* eslint-disable no-console */
+const OverlayScrollbars = require('overlayscrollbars')
+
 module.exports = function () {
   let rootQuery = '.dashboard'
   let sidebarRightMobileShow = false
   let sidebarLeftMobileShow = false
   let searchShow = false
+
+  // component
+  let sidebarLeftOverlayscrollbarsInstance
 
   // dom
   let sidebarRight
@@ -19,6 +24,8 @@ module.exports = function () {
   // init
   const init = function (query) {
     rootQuery = query
+    overlayScrollbarsInit()
+    sidebarLeftInit()
     binding()
   }
 
@@ -62,6 +69,10 @@ module.exports = function () {
         duration: 400,
         easing: 'ease-in'
       })
+      setTimeout(function () {
+        overlayScrollbarsDestroy()
+        overlayScrollbarsInit()
+      }, 400)
     } else {
       sidebarLeft.animate([
         { left: '0px' },
@@ -103,6 +114,11 @@ module.exports = function () {
     }
   }
 
+  // sidebar
+  const sidebarLeftInit = function () {
+    sidebarLeftOverlayscrollbarsInstance.scroll(document.querySelector('.item.active'), 500)
+  }
+
   const binding = function () {
     sidebarRight = document.querySelector(`${rootQuery} .sidebar.right`)
     sidebarRightOverlay = document.querySelector(`${rootQuery} .overlay .overlay-sidebar-right`)
@@ -139,10 +155,35 @@ module.exports = function () {
       searchShow = !searchShow
       toggleSearch()
     })
+    window.addEventListener('resize', function () {
+      overlayScrollbarsDestroy()
+      overlayScrollbarsInit()
+    })
   }
 
+  const overlayScrollbarsInit = function () {
+    const options = {
+      className: 'os-theme-minimal-dark',
+      sizeAutoCapable: true,
+      scrollbars: {
+        visibility: 'auto',
+        autoHide: 'leave',
+        clickScrolling: true
+      }
+    }
+    sidebarLeftOverlayscrollbarsInstance = OverlayScrollbars(document.querySelector(`${rootQuery} .sidebar.left .scrollable`), options)
+    // overlayscrollbarsInstance = OverlayScrollbars(document.querySelector(`${rootQuery} .sidebar.left .scrollable`), options)
+  }
+
+  const overlayScrollbarsDestroy = function () {
+    sidebarLeftOverlayscrollbarsInstance?.destroy()
+  }
+
+  // return
   return {
     init,
-    binding
+    binding,
+    overlayScrollbarsInit,
+    overlayScrollbarsDestroy
   }
 }

@@ -16,6 +16,7 @@
     "@nuxtjs/axios": "^5.12.2",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
+    "overlayscrollbars": "^1.13.1",
     "vue-feather-icons": "^5.1.0"
   },
   "devDependencies": {

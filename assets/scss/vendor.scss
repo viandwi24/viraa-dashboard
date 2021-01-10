@@ -1,2 +1,8 @@
 @charset 'UTF-8';
+
+// tailwind
 @import './vendor/tailwind';
+
+// overlay scrollbar
+@import '~/node_modules/overlayscrollbars/css/OverlayScrollbars.css';
+@import './vendor/scrollbars/theme';

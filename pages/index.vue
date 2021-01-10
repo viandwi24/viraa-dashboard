@@ -1,5 +1,6 @@
 <template>
   <div class="dashboard">
+    <!-- Overlays -->
     <div class="overlay">
       <div class="overlay-sidebar-left hidden" />
       <div class="overlay-sidebar-right hidden" />
@@ -15,6 +16,8 @@
         </form>
       </div>
     </div>
+
+    <!-- Sidebar:Left -->
     <div class="sidebar left">
       <div class="brand">
         <a href="#">
@@ -54,33 +57,35 @@
               <span class="text">Planning</span>
             </a>
           </div>
-          <div class="item">
+          <div v-for="i in 5" :key="i" class="item">
             <a href="#">
               <settings-icon size="1.2x" class="icon" />
               <span class="text">Setting</span>
             </a>
           </div>
         </div>
-        <div class="footer px-6 pb-6">
-          <div class="card bg-blue-100 p-4 rounded-xl">
-            <div class="text-center mb-2" style="margin-top: -35px;">
-              <img src="~/assets/images/icons/upgrade-premium.svg" alt="Upgrade!" class="inline-block">
-            </div>
-            <p class="text-sm text-center mb-4">
-              Upgrade to <b>PRO</b> for more resources.
-            </p>
-            <a href="#" class="bg-blue-700 inline-block w-full py-2 rounded-xl text-gray-100 font-semibold text-center">
-              Uppgrade
-            </a>
+      </div>
+      <div class="footer px-6 pb-6">
+        <div class="card bg-blue-100 p-4 rounded-xl">
+          <div class="text-center mb-2" style="margin-top: -35px;">
+            <img src="~/assets/images/icons/upgrade-premium.svg" alt="Upgrade!" class="inline-block">
           </div>
+          <p class="text-sm text-center mb-4">
+            Upgrade to <b>PRO</b> for more resources.
+          </p>
+          <a href="#" class="bg-blue-700 inline-block w-full py-2 rounded-xl text-gray-100 font-semibold text-center">
+            Uppgrade
+          </a>
         </div>
       </div>
     </div>
+
+    <!-- Content -->
     <div class="content container mx-auto px-4 lg:px-8">
       <!-- section header -->
       <div class="header">
         <div class="left flex">
-          <button class="sidebar-left-toggle bg-gray-300 px-2 py-2 rounded-lg text-gray-700 font-semibold inline sm:inline lg:hidden mr-2">
+          <button class="sidebar-left-toggle bg-gray-300 px-2 py-2 rounded-lg text-gray-700 font-semibold inline md:hidden mr-2">
             <align-left-icon size="1.2x" />
           </button>
           <h1>Dashboard</h1>
@@ -177,65 +182,71 @@
         </div>
       </div>
     </div>
+
+    <!-- Sidebar:Right -->
     <div class="sidebar right">
-      <div class="container mx-auto px-8 pt-6">
-        <div class="menu-logout">
-          <a href="#" class="flex justify-between text-gray-800">
-            <span class="font-semibold">Logout</span>
-            <log-out-icon size="1.2x" />
-          </a>
-        </div>
-        <div class="profile mt-8">
-          <img src="~/assets/images/profile.svg" alt="Avatar" class="avatar" width="140px">
-          <div class="font-semibold mt-4 text-gray-800">
-            Alfian Dwi Nugraha
+      <div class="flex flex-col h-full">
+        <div class="container flex flex-col mx-auto px-6 pt-6">
+          <div class="menu-logout">
+            <a href="#" class="flex justify-between text-gray-800">
+              <span class="font-semibold">Logout</span>
+              <log-out-icon size="1.2x" />
+            </a>
           </div>
-          <div class="text-xs mt-1 text-gray-600">
-            viandwicyber@gmail.com
+          <div class="profile mt-8">
+            <img src="~/assets/images/profile.svg" alt="Avatar" class="avatar" width="140px">
+            <div class="font-semibold mt-4 text-gray-800">
+              Alfian Dwi Nugraha
+            </div>
+            <div class="text-xs mt-1 text-gray-600">
+              viandwicyber@gmail.com
+            </div>
           </div>
         </div>
-        <div class="mt-10">
-          <div class="flex justify-between">
+        <div class="mt-10 flex-1 flex flex-col">
+          <div class="container flex justify-between mx-auto px-6 pt-6">
             <span class="font-semibold">Notifications</span>
             <bell-icon size="1.2x" class="text-gray-500" />
           </div>
-          <div class="list mt-3">
-            <div class="item my-2 flex gap-2">
-              <div class="icon w-2/12 bg-red-100 text-red-500 rounded-lg">
-                <alert-circle-icon size="1.2x" />
-              </div>
-              <div class="content w-10/12">
-                <div class="font-semibold text-gray-800">
-                  Your plan started in free.
+          <div class="scrollable relative flex-1 mt-4">
+            <div class="container mx-auto px-6 pb-4 pt-2 flex flex-col gap-3">
+              <div class="item flex gap-3">
+                <div style="width: 42px;height: 42px;" class="bg-red-100 text-red-500 rounded-lg px-3 py-3">
+                  <alert-circle-icon size="1.2x" />
                 </div>
-                <div class="text-xs text-gray-500 mt-1">
-                  Friday, 8 Jan 2021
-                </div>
-              </div>
-            </div>
-            <div class="item my-2 flex gap-2">
-              <div class="icon w-2/12 bg-blue-100 text-blue-500 rounded-lg">
-                <mail-icon size="1.2x" />
-              </div>
-              <div class="content w-10/12">
-                <div class="font-semibold text-gray-800">
-                  Receive new message.
-                </div>
-                <div class="text-xs text-gray-500 mt-1">
-                  Saturday, 9 Jan 2021
+                <div>
+                  <div class="font-semibold text-sm text-gray-800">
+                    Your plan started in free.
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">
+                    Friday, 8 Jan 2021
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="item my-2 flex gap-2">
-              <div class="icon w-2/12 bg-blue-100 text-blue-500 rounded-lg">
-                <eye-icon size="1.2x" />
-              </div>
-              <div class="content w-10/12">
-                <div class="font-semibold text-gray-800">
-                  Newest post got 100 view.
+              <div class="item flex gap-3">
+                <div style="width: 42px;height: 42px;" class="bg-blue-100 text-blue-500 rounded-lg px-3 py-3">
+                  <mail-icon size="1.2x" />
                 </div>
-                <div class="text-xs text-gray-500 mt-1">
-                  Saturday, 9 Jan 2021
+                <div>
+                  <div class="font-semibold text-sm text-gray-800">
+                    Receive new message.
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">
+                    Saturday, 9 Jan 2021
+                  </div>
+                </div>
+              </div>
+              <div v-for="i in 5" :key="i" class="item flex gap-3">
+                <div style="width: 42px;height: 42px;" class="bg-blue-100 text-blue-500 rounded-lg px-3 py-3">
+                  <eye-icon size="1.2x" />
+                </div>
+                <div>
+                  <div class="font-semibold text-sm text-gray-800">
+                    Newest post got 100 view.
+                  </div>
+                  <div class="text-xs text-gray-500 mt-1">
+                    Saturday, 9 Jan 2021
+                  </div>
                 </div>
               </div>
             </div>
@@ -266,6 +277,7 @@ const {
   AlignLeftIcon,
   XIcon
 } = require('vue-feather-icons')
+const OverlayScrollbars = require('overlayscrollbars')
 const dashboard = require('~/assets/scripts/dashboard')
 
 export default Vue.extend({
@@ -290,6 +302,18 @@ export default Vue.extend({
   mounted () {
     // dashboard template init
     dashboard().init('.dashboard')
+
+    // custom scripts
+    const options = {
+      className: 'os-theme-minimal-dark',
+      sizeAutoCapable: true,
+      scrollbars: {
+        visibility: 'auto',
+        autoHide: 'leave',
+        clickScrolling: true
+      }
+    }
+    OverlayScrollbars(document.querySelector('.dashboard .sidebar.right .scrollable'), options)
   }
 })
 </script>

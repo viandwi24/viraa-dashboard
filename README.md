@@ -14,6 +14,7 @@ A Open Source Flat Design Dashboard Template Built with Tailwindcss and Nuxtjs.
 - [x] Make Tailwindcss as a main toolkit
 - [x] Building Dashboard Pages
 - [x] Adding Animation On Toggled in Dashboard Page
+- [x] Adding Overlay Scrollbars
 - [ ] Finishing Dashboard Page
 - [ ] Make Other Page
 

@@ -1,5 +1,20 @@
 <template>
   <div class="dashboard">
+    <div class="overlay">
+      <div class="overlay-sidebar-left hidden" />
+      <div class="overlay-sidebar-right hidden" />
+      <div class="overlay-search hidden">
+        <button class="close text-gray-200">
+          <x-icon size="3x" class="icon" />
+        </button>
+        <form method="GET">
+          <div class="search-box">
+            <search-icon size="1.5x" class="icon" />
+            <input type="text" class="input" placeholder="Search ...">
+          </div>
+        </form>
+      </div>
+    </div>
     <div class="sidebar left">
       <div class="brand">
         <a href="#">
@@ -61,30 +76,40 @@
         </div>
       </div>
     </div>
-    <div class="content container mx-auto px-8">
+    <div class="content container mx-auto px-4 lg:px-8">
       <!-- section header -->
       <div class="header">
-        <h1>Dashboard</h1>
-        <div class="right">
-          <span class="text-sm text-gray-500">Saturday, 9 Jan 2021</span>
-          <button class="bg-blue-200 px-2 py-2 rounded-lg text-blue-700 font-semibold inline ml-2">
-            <search-icon size="1.2x" />
+        <div class="left flex">
+          <button class="sidebar-left-toggle bg-gray-300 px-2 py-2 rounded-lg text-gray-700 font-semibold inline sm:inline lg:hidden mr-2">
+            <align-left-icon size="1.2x" />
           </button>
+          <h1>Dashboard</h1>
+        </div>
+        <div class="right">
+          <span class="text-sm hidden md:block text-gray-500">Saturday, 9 Jan 2021</span>
+          <div class="menu flex">
+            <button class="search-toggle bg-blue-200 px-2 py-2 rounded-lg text-blue-700 font-semibold inline ml-2">
+              <search-icon size="1.2x" />
+            </button>
+            <button class="sidebar-right-toggle bg-gray-300 px-2 py-2 rounded-lg text-gray-700 font-semibold inline sm:inline lg:hidden ml-2">
+              <grid-icon size="1.2x" />
+            </button>
+          </div>
         </div>
       </div>
 
       <!-- section welcome card -->
-      <div class="card mt-12 bg-red-100 block rounded-xl py-8 px-10">
-        <div class="flex">
-          <div class="text w-6/12">
+      <div class="card mt-4 lg:mt-12 bg-red-100 block rounded-xl lg:py-8 lg:px-10 py-6 px-8">
+        <div class="block lg:flex">
+          <div class="text lg:w-6/12 w-full">
             <span class="font-bold text-xl text-pink-600">Welcome back Alfian!</span>
             <p class="pt-4 text-sm text-gray-800">
               You've learned 80% of your goal this week!<br>
               Keep it up and improve your results!
             </p>
           </div>
-          <div class="illustration w-6/12">
-            <img src="~/assets/images/illustrations/1.svg" class="w-full" style="margin-top: -80px;">
+          <div class="illustration w-6/12 hidden lg:block">
+            <img src="~/assets/images/illustrations/1.svg" class="w-full negative-illustration">
           </div>
         </div>
       </div>
@@ -94,26 +119,26 @@
         <div class="font-semibold mb-4">
           Your posts
         </div>
-        <div class="list gap-3">
-          <div class="item rounded-xl w-full lg:w-1/3 flex bg-red-400">
+        <div class="list block md:flex gap-3">
+          <div class="item my-2 rounded-xl w-full md:w-1/3 flex bg-red-400">
             <div class="main p-4 self-center">
               <div class="px-4 py-2 rounded-xl bg-red-600 text-xl text-gray-100">
                 10
               </div>
             </div>
-            <div class="text self-center w-full">
+            <div class="self-center w-full">
               <div class="text-sm text-gray-50">
                 Published
               </div>
               <div class="font-semibold text-gray-50 pr-4">
                 <a href="#" class="flex justify-between">
-                  <span>Total Comments</span>
+                  <span>Comments</span>
                   <arrow-right-icon size="1.2x" class="self-center" />
                 </a>
               </div>
             </div>
           </div>
-          <div class="item rounded-xl w-full lg:w-1/3 flex bg-purple-400">
+          <div class="item my-2 rounded-xl w-full md:w-1/3 flex bg-purple-400">
             <div class="main p-4 self-center">
               <div class="px-4 py-2 rounded-xl bg-purple-600 text-xl text-gray-100">
                 4
@@ -125,13 +150,13 @@
               </div>
               <div class="font-semibold text-gray-50 pr-4">
                 <a href="#" class="flex justify-between">
-                  <span>Total Comments</span>
+                  <span>Comments</span>
                   <arrow-right-icon size="1.2x" class="self-center" />
                 </a>
               </div>
             </div>
           </div>
-          <div class="item rounded-xl w-full lg:w-1/3 flex bg-blue-400">
+          <div class="item my-2 rounded-xl w-full md:w-1/3 flex bg-blue-400">
             <div class="main p-4 self-center">
               <div class="px-4 py-2 rounded-xl bg-blue-600 text-xl text-gray-100">
                 1
@@ -143,7 +168,7 @@
               </div>
               <div class="font-semibold text-gray-50 pr-4">
                 <a href="#" class="flex justify-between">
-                  <span>Total Draft</span>
+                  <span>Draft</span>
                   <arrow-right-icon size="1.2x" class="self-center" />
                 </a>
               </div>
@@ -223,11 +248,48 @@
 
 <script lang="ts">
 import Vue from 'vue'
-const { HomeIcon, EditIcon, SettingsIcon, FolderIcon, MessageSquareIcon, CalendarIcon, SearchIcon, LogOutIcon, BellIcon, AlertCircleIcon, MailIcon, EyeIcon, ArrowRightIcon } = require('vue-feather-icons')
+const {
+  HomeIcon,
+  EditIcon,
+  SettingsIcon,
+  FolderIcon,
+  MessageSquareIcon,
+  CalendarIcon,
+  SearchIcon,
+  LogOutIcon,
+  BellIcon,
+  AlertCircleIcon,
+  MailIcon,
+  EyeIcon,
+  ArrowRightIcon,
+  GridIcon,
+  AlignLeftIcon,
+  XIcon
+} = require('vue-feather-icons')
+const dashboard = require('~/assets/scripts/dashboard')
 
 export default Vue.extend({
   components: {
-    HomeIcon, EditIcon, SettingsIcon, FolderIcon, MessageSquareIcon, CalendarIcon, SearchIcon, LogOutIcon, BellIcon, AlertCircleIcon, MailIcon, EyeIcon, ArrowRightIcon
+    HomeIcon,
+    EditIcon,
+    SettingsIcon,
+    FolderIcon,
+    MessageSquareIcon,
+    CalendarIcon,
+    SearchIcon,
+    LogOutIcon,
+    BellIcon,
+    AlertCircleIcon,
+    MailIcon,
+    EyeIcon,
+    ArrowRightIcon,
+    GridIcon,
+    AlignLeftIcon,
+    XIcon
+  },
+  mounted () {
+    // dashboard template init
+    dashboard().init('.dashboard')
   }
 })
 </script>

@@ -1,4 +1,5 @@
 # viraa-dashboard
+A Open Source Flat Design Dashboard Built for Nuxtjs
 
 ## Build Setup
 

@@ -55,10 +55,10 @@ export default {
   // purge css
   purgeCSS: { mode: 'postcss' },
 
-  // fonts
+  // fonts font-family: '', sans-serif;
   googleFonts: {
     families: {
-      Raleway: true
+      Poppins: true
     }
   }
 }
